@@ -1,0 +1,17 @@
+version: "3.0"
+services:
+  frps:
+    image: oldiy/frps
+    ports:
+      - "4500:4500"
+      - "80:80"
+      - "3839:3839"
+    volumes:
+      - ./frps/frps.ini:/frp/frps.ini
+  nginx:
+    image: nginx
+    ports:
+      - 443:443
+    volumes:
+      - ./nginx/config:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
